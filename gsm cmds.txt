@@ -1,0 +1,77 @@
+note at has always to be written before + so i just skipping it for simplicity:-
+
+to query network registration 
++CREG?
+
+to register to a particular network
++Creg = 0,0,"network code " or check datasheet
+
+to disable or enable netwrok
++cfun=0 and +cfun=1 respectively
+
+to turn off device 
++cpof
+
+to make a call
+atd<number>;
+
+to hang an incoming call 
+ath
+
+to answer an incoming call
+ata
+
+to hang an dialed call
+ath1 or ath
+
+to set the message in text mode or hex mode cmd is
++cmgf=1 or +cmgf=0 respectively 
+
+//note hex mode means all data is converted to hex mode characters but if you interpret it
+//using a microcontroller whatever data you will actually get will be in ascii characters only but will be using only 0 to 9
+//and A to F characters only
+
+to receive a messsage properly i.e. directly to the serial port instead of getting saved in sim or eeprom
+we may need to issue and additional command depending on device
++cnmi=2,2,0,0,0  or +CNMI = 2,2,0,0 //new message indication format
+
+to set msg storage memory
+at+cpms = "SM" for sim card
+check data sheet for other storage variables.
+
+to query number of message stored in sim and memory capacity
+at+cpms?
+
+to store/save all changed settings in device
++csas //note settings may be saved in sim or device eeprom depending on device and sim capability
+
+to restore all saved settings
++cres
+
+to send a message
++cmgs="<ph number>" <cr> <type message> <ctrl+z> //note the setting selected for text mode or hex mode using +cmgf also affects this
+
+to read a message stored in memory either device or sim(selected by +cpms)
++cmgr=<index> //where index is a number like 1 or 2 or 3  etc
+
+to list messages stored in memory selected by +cpms
++cmgl=<message type>
+
+//message type can take any of these values
+
+Text mode    PDU mode  Status of messages
+possible     values     possible values in memory
+
+“REC UNREAD”  0          received unread messages
+“REC READ”    1          received read messages
+“STO UNSENT”  2          stored unsent messages
+“STO SENT”    3          stored sent messages
+“ALL”         4          all messages
+
+
+to show incoming call number all with "RING" ascii
++clip=1 to show and +clip =0 to not //this setting is not getting saved so we should run this command once every startup
+//it also show the contact name if it is saved in the sim
+
+to give ussd commands like to check balance or request operator for info
++cusd=1,"<the code i.e *123# >,15 //this is the format

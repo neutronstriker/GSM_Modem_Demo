@@ -1,0 +1,1830 @@
+
+GSM_Modem.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000106  00800100  000008b2  00000946  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000008b2  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          0000007b  00800206  00800206  00000a4c  2**0
+                  ALLOC
+  3 .debug_aranges 00000020  00000000  00000000  00000a4c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_pubnames 00000178  00000000  00000000  00000a6c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000ac2  00000000  00000000  00000be4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 000002eb  00000000  00000000  000016a6  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000902  00000000  00000000  00001991  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000170  00000000  00000000  00002294  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00000231  00000000  00000000  00002404  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000545  00000000  00000000  00002635  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000090  00000000  00000000  00002b7a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   8:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  10:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  14:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  18:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  1c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  20:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  24:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  28:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  2c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  30:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  34:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  38:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  40:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  48:	0c 94 0d 02 	jmp	0x41a	; 0x41a <__vector_18>
+  4c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  50:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  54:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  58:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  5c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  60:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  64:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	12 e0       	ldi	r17, 0x02	; 2
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	e2 eb       	ldi	r30, 0xB2	; 178
+  7c:	f8 e0       	ldi	r31, 0x08	; 8
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <.do_copy_data_start>
+
+00000080 <.do_copy_data_loop>:
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+
+00000084 <.do_copy_data_start>:
+  84:	a6 30       	cpi	r26, 0x06	; 6
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <.do_copy_data_loop>
+
+0000008a <__do_clear_bss>:
+  8a:	12 e0       	ldi	r17, 0x02	; 2
+  8c:	a6 e0       	ldi	r26, 0x06	; 6
+  8e:	b2 e0       	ldi	r27, 0x02	; 2
+  90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
+
+00000092 <.do_clear_bss_loop>:
+  92:	1d 92       	st	X+, r1
+
+00000094 <.do_clear_bss_start>:
+  94:	a1 38       	cpi	r26, 0x81	; 129
+  96:	b1 07       	cpc	r27, r17
+  98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
+  9a:	0e 94 c7 02 	call	0x58e	; 0x58e <main>
+  9e:	0c 94 57 04 	jmp	0x8ae	; 0x8ae <_exit>
+
+000000a2 <__bad_interrupt>:
+  a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a6 <uart_init>:
+Date :  06-09-2014
+
+*/ 
+
+int uart_init(unsigned long int BAUD)
+{ 
+  a6:	ef 92       	push	r14
+  a8:	ff 92       	push	r15
+  aa:	0f 93       	push	r16
+  ac:	1f 93       	push	r17
+  ae:	cf 93       	push	r28
+  b0:	df 93       	push	r29
+  b2:	7b 01       	movw	r14, r22
+  b4:	8c 01       	movw	r16, r24
+
+	//in this way if i define the uart_init() i can dynamicly switch baud rate
+	//in the program on the fly whenever i need.
+	
+	unsigned int UBRR_VAL = ((F_CPU/(16UL * BAUD))-1);
+  b6:	9b 01       	movw	r18, r22
+  b8:	ac 01       	movw	r20, r24
+  ba:	94 e0       	ldi	r25, 0x04	; 4
+  bc:	22 0f       	add	r18, r18
+  be:	33 1f       	adc	r19, r19
+  c0:	44 1f       	adc	r20, r20
+  c2:	55 1f       	adc	r21, r21
+  c4:	9a 95       	dec	r25
+  c6:	d1 f7       	brne	.-12     	; 0xbc <uart_init+0x16>
+  c8:	60 e0       	ldi	r22, 0x00	; 0
+  ca:	7b e1       	ldi	r23, 0x1B	; 27
+  cc:	87 eb       	ldi	r24, 0xB7	; 183
+  ce:	90 e0       	ldi	r25, 0x00	; 0
+  d0:	0e 94 21 04 	call	0x842	; 0x842 <__udivmodsi4>
+  d4:	e9 01       	movw	r28, r18
+	
+	unsigned long int generated_BAUD = (F_CPU/(16UL * (UBRR_VAL+1)));
+	int error = 0;
+	error = generated_BAUD - BAUD;
+  d6:	40 e0       	ldi	r20, 0x00	; 0
+  d8:	50 e0       	ldi	r21, 0x00	; 0
+  da:	84 e0       	ldi	r24, 0x04	; 4
+  dc:	22 0f       	add	r18, r18
+  de:	33 1f       	adc	r19, r19
+  e0:	44 1f       	adc	r20, r20
+  e2:	55 1f       	adc	r21, r21
+  e4:	8a 95       	dec	r24
+  e6:	d1 f7       	brne	.-12     	; 0xdc <uart_init+0x36>
+  e8:	60 e0       	ldi	r22, 0x00	; 0
+  ea:	7b e1       	ldi	r23, 0x1B	; 27
+  ec:	87 eb       	ldi	r24, 0xB7	; 183
+  ee:	90 e0       	ldi	r25, 0x00	; 0
+  f0:	0e 94 21 04 	call	0x842	; 0x842 <__udivmodsi4>
+  f4:	2e 19       	sub	r18, r14
+  f6:	3f 09       	sbc	r19, r15
+	
+
+	if(error < 0)//taking modulus of error
+	error = error * -1;
+
+	error = (error * 100UL)/BAUD;
+  f8:	37 ff       	sbrs	r19, 7
+  fa:	03 c0       	rjmp	.+6      	; 0x102 <uart_init+0x5c>
+  fc:	30 95       	com	r19
+  fe:	21 95       	neg	r18
+ 100:	3f 4f       	sbci	r19, 0xFF	; 255
+ 102:	b9 01       	movw	r22, r18
+ 104:	88 27       	eor	r24, r24
+ 106:	77 fd       	sbrc	r23, 7
+ 108:	80 95       	com	r24
+ 10a:	98 2f       	mov	r25, r24
+ 10c:	24 e6       	ldi	r18, 0x64	; 100
+ 10e:	30 e0       	ldi	r19, 0x00	; 0
+ 110:	40 e0       	ldi	r20, 0x00	; 0
+ 112:	50 e0       	ldi	r21, 0x00	; 0
+ 114:	0e 94 ef 03 	call	0x7de	; 0x7de <__mulsi3>
+ 118:	a8 01       	movw	r20, r16
+ 11a:	97 01       	movw	r18, r14
+ 11c:	0e 94 21 04 	call	0x842	; 0x842 <__udivmodsi4>
+	
+	if(error >= 2)//acceptable reciever error is +/-2%
+ 120:	22 30       	cpi	r18, 0x02	; 2
+ 122:	31 05       	cpc	r19, r1
+ 124:	1c f0       	brlt	.+6      	; 0x12c <uart_init+0x86>
+ 126:	20 e0       	ldi	r18, 0x00	; 0
+ 128:	30 e0       	ldi	r19, 0x00	; 0
+ 12a:	0e c0       	rjmp	.+28     	; 0x148 <uart_init+0xa2>
+{ 
+
+	//in this way if i define the uart_init() i can dynamicly switch baud rate
+	//in the program on the fly whenever i need.
+	
+	unsigned int UBRR_VAL = ((F_CPU/(16UL * BAUD))-1);
+ 12c:	ce 01       	movw	r24, r28
+ 12e:	01 97       	sbiw	r24, 0x01	; 1
+	error = (error * 100UL)/BAUD;
+	
+	if(error >= 2)//acceptable reciever error is +/-2%
+		return 0;//i,e, there is more than tolerable error in baud rate generation
+	
+	UBRR0L = UBRR_VAL;
+ 130:	80 93 c4 00 	sts	0x00C4, r24
+	UBRR0H = UBRR_VAL>>8;
+ 134:	90 93 c5 00 	sts	0x00C5, r25
+	UCSR0B = (1<<TXEN0) | (1<<RXEN0);
+ 138:	88 e1       	ldi	r24, 0x18	; 24
+ 13a:	80 93 c1 00 	sts	0x00C1, r24
+	UCSR0C = (1<<UCSZ00) | (1<<UCSZ01); //in atmega328p there is no URSEL bit
+ 13e:	86 e0       	ldi	r24, 0x06	; 6
+ 140:	80 93 c2 00 	sts	0x00C2, r24
+ 144:	21 e0       	ldi	r18, 0x01	; 1
+ 146:	30 e0       	ldi	r19, 0x00	; 0
+		
+	return 1; //serial port initialised succesfully
+
+}
+ 148:	c9 01       	movw	r24, r18
+ 14a:	df 91       	pop	r29
+ 14c:	cf 91       	pop	r28
+ 14e:	1f 91       	pop	r17
+ 150:	0f 91       	pop	r16
+ 152:	ff 90       	pop	r15
+ 154:	ef 90       	pop	r14
+ 156:	08 95       	ret
+
+00000158 <uart_read>:
+
+
+unsigned char uart_read()
+{
+	unsigned char data;
+	while(!(UCSR0A & (1<<RXC0)));
+ 158:	80 91 c0 00 	lds	r24, 0x00C0
+ 15c:	87 ff       	sbrs	r24, 7
+ 15e:	fc cf       	rjmp	.-8      	; 0x158 <uart_read>
+	data= UDR0;
+ 160:	80 91 c6 00 	lds	r24, 0x00C6
+	UCSR0A |= (1<<RXC0);
+ 164:	90 91 c0 00 	lds	r25, 0x00C0
+ 168:	90 68       	ori	r25, 0x80	; 128
+ 16a:	90 93 c0 00 	sts	0x00C0, r25
+	return data;
+}
+ 16e:	08 95       	ret
+
+00000170 <uart_write>:
+
+void uart_write(unsigned char data)
+{
+	UDR0=data;
+ 170:	80 93 c6 00 	sts	0x00C6, r24
+	while(!(UCSR0A & (1<<UDRE0)));
+ 174:	80 91 c0 00 	lds	r24, 0x00C0
+ 178:	85 ff       	sbrs	r24, 5
+ 17a:	fc cf       	rjmp	.-8      	; 0x174 <uart_write+0x4>
+	UCSR0A |= (1<<UDRE0);
+ 17c:	80 91 c0 00 	lds	r24, 0x00C0
+ 180:	80 62       	ori	r24, 0x20	; 32
+ 182:	80 93 c0 00 	sts	0x00C0, r24
+}
+ 186:	08 95       	ret
+
+00000188 <u_print>:
+
+void u_print(char * string)
+{
+ 188:	ac 01       	movw	r20, r24
+ 18a:	20 e0       	ldi	r18, 0x00	; 0
+ 18c:	0c c0       	rjmp	.+24     	; 0x1a6 <u_print+0x1e>
+	return data;
+}
+
+void uart_write(unsigned char data)
+{
+	UDR0=data;
+ 18e:	e0 93 c6 00 	sts	0x00C6, r30
+	while(!(UCSR0A & (1<<UDRE0)));
+ 192:	80 91 c0 00 	lds	r24, 0x00C0
+ 196:	85 ff       	sbrs	r24, 5
+ 198:	fc cf       	rjmp	.-8      	; 0x192 <u_print+0xa>
+	UCSR0A |= (1<<UDRE0);
+ 19a:	80 91 c0 00 	lds	r24, 0x00C0
+ 19e:	80 62       	ori	r24, 0x20	; 32
+ 1a0:	80 93 c0 00 	sts	0x00C0, r24
+{
+	uint8_t i=0;
+	while(string[i] != '\0')
+	{
+		uart_write(string[i]);
+		i++;
+ 1a4:	2f 5f       	subi	r18, 0xFF	; 255
+}
+
+void u_print(char * string)
+{
+	uint8_t i=0;
+	while(string[i] != '\0')
+ 1a6:	fa 01       	movw	r30, r20
+ 1a8:	e2 0f       	add	r30, r18
+ 1aa:	f1 1d       	adc	r31, r1
+ 1ac:	e0 81       	ld	r30, Z
+ 1ae:	ee 23       	and	r30, r30
+ 1b0:	71 f7       	brne	.-36     	; 0x18e <u_print+0x6>
+	{
+		uart_write(string[i]);
+		i++;
+	}
+}
+ 1b2:	08 95       	ret
+
+000001b4 <SIPO_send>:
+Date : 01-08-2014
+											*/
+
+
+void SIPO_send(unsigned char var) // you may try to make these functions inline so that this might give a performance 
+{									//boost by decreasing use of pointers and ram. but this will increase however increase
+ 1b4:	20 e0       	ldi	r18, 0x00	; 0
+    can be achieved.
+*/
+void
+_delay_loop_1(uint8_t __count)
+{
+	__asm__ volatile (
+ 1b6:	34 e0       	ldi	r19, 0x04	; 4
+									//size of the program, you have to keep that in mind.
+	unsigned char i;
+	
+	for(i=0;i<8;i++)
+	{
+		if(var & (1<<7))
+ 1b8:	87 ff       	sbrs	r24, 7
+ 1ba:	02 c0       	rjmp	.+4      	; 0x1c0 <SIPO_send+0xc>
+		SIPO |= (1<<SPIN);
+ 1bc:	2c 9a       	sbi	0x05, 4	; 5
+ 1be:	01 c0       	rjmp	.+2      	; 0x1c2 <SIPO_send+0xe>
+
+		else 
+		SIPO &= ~(1<<SPIN);
+ 1c0:	2c 98       	cbi	0x05, 4	; 5
+
+		SIPO |= (1<<CLK);
+ 1c2:	2d 9a       	sbi	0x05, 5	; 5
+ 1c4:	93 2f       	mov	r25, r19
+ 1c6:	9a 95       	dec	r25
+ 1c8:	f1 f7       	brne	.-4      	; 0x1c6 <SIPO_send+0x12>
+		_delay_us(1); //can be reduced to 1us i have checked it
+					//so our SIPO clock is 1/10us that is 100khz speed
+					//80 us delay for 1 byte
+		SIPO &= ~(1<<CLK);
+ 1ca:	2d 98       	cbi	0x05, 5	; 5
+ 1cc:	93 2f       	mov	r25, r19
+ 1ce:	9a 95       	dec	r25
+ 1d0:	f1 f7       	brne	.-4      	; 0x1ce <SIPO_send+0x1a>
+void SIPO_send(unsigned char var) // you may try to make these functions inline so that this might give a performance 
+{									//boost by decreasing use of pointers and ram. but this will increase however increase
+									//size of the program, you have to keep that in mind.
+	unsigned char i;
+	
+	for(i=0;i<8;i++)
+ 1d2:	2f 5f       	subi	r18, 0xFF	; 255
+ 1d4:	28 30       	cpi	r18, 0x08	; 8
+ 1d6:	11 f0       	breq	.+4      	; 0x1dc <SIPO_send+0x28>
+					//so our SIPO clock is 1/10us that is 100khz speed
+					//80 us delay for 1 byte
+		SIPO &= ~(1<<CLK);
+		_delay_us(1);
+
+		var = var<<1;
+ 1d8:	88 0f       	add	r24, r24
+ 1da:	ee cf       	rjmp	.-36     	; 0x1b8 <SIPO_send+0x4>
+ 1dc:	08 95       	ret
+
+000001de <send_nibble>:
+	}	
+
+}
+
+void send_nibble(unsigned char x)  //try to make this also inline if necessary
+{
+ 1de:	ff 92       	push	r15
+ 1e0:	0f 93       	push	r16
+ 1e2:	1f 93       	push	r17
+	x |= (1<<en); // set en pin as 1
+ 1e4:	24 e0       	ldi	r18, 0x04	; 4
+ 1e6:	f2 2e       	mov	r15, r18
+ 1e8:	f8 2a       	or	r15, r24
+	
+	SIPO_send(x); //send the data through SIPO
+ 1ea:	8f 2d       	mov	r24, r15
+ 1ec:	0e 94 da 00 	call	0x1b4	; 0x1b4 <SIPO_send>
+	
+	SIPO |= (1<<STB); //after sending enable the STROBE so that data is now available on the data pins
+ 1f0:	2b 9a       	sbi	0x05, 3	; 5
+    milliseconds can be achieved.
+ */
+void
+_delay_loop_2(uint16_t __count)
+{
+	__asm__ volatile (
+ 1f2:	08 eb       	ldi	r16, 0xB8	; 184
+ 1f4:	1b e0       	ldi	r17, 0x0B	; 11
+ 1f6:	c8 01       	movw	r24, r16
+ 1f8:	01 97       	sbiw	r24, 0x01	; 1
+ 1fa:	f1 f7       	brne	.-4      	; 0x1f8 <send_nibble+0x1a>
+
+	_delay_ms(1); //give delay of 10ms for enable change CLK
+	
+	SIPO &= ~(1<<STB);//clear the strobe now
+ 1fc:	2b 98       	cbi	0x05, 3	; 5
+
+	x &= ~(1<<en); // now make the enable pin of lcd as 0
+		
+	SIPO_send(x); // again send new data in which only enable pin state of lcd is changed
+ 1fe:	8f 2d       	mov	r24, r15
+ 200:	8b 7f       	andi	r24, 0xFB	; 251
+ 202:	0e 94 da 00 	call	0x1b4	; 0x1b4 <SIPO_send>
+					
+	SIPO |= (1<<STB); //again set the strobe
+ 206:	2b 9a       	sbi	0x05, 3	; 5
+ 208:	c8 01       	movw	r24, r16
+ 20a:	01 97       	sbiw	r24, 0x01	; 1
+ 20c:	f1 f7       	brne	.-4      	; 0x20a <send_nibble+0x2c>
+	_delay_ms(1); //delay 10ms
+	SIPO &= ~(1<<STB); // clear the strobe
+ 20e:	2b 98       	cbi	0x05, 3	; 5
+
+
+		//to send a nibble 2 * 80us + 2 * 1ms = 2.16ms total delay
+}
+ 210:	1f 91       	pop	r17
+ 212:	0f 91       	pop	r16
+ 214:	ff 90       	pop	r15
+ 216:	08 95       	ret
+
+00000218 <cmd>:
+
+void cmd(unsigned char var)
+{
+ 218:	1f 93       	push	r17
+ 21a:	18 2f       	mov	r17, r24
+
+//send higher nibble
+	x = 0xf0 & var; //get higher nibble into x  
+	
+	x &= ~(1<<rs); 	//set the rs pin as 0
+	send_nibble(x); //enable pin clocking mechanism is contained in nibble fucntion
+ 21c:	80 7f       	andi	r24, 0xF0	; 240
+ 21e:	0e 94 ef 00 	call	0x1de	; 0x1de <send_nibble>
+
+//now send lower nibble
+	x = 0xf0 & (var<<4);   // now repeat same process for lower nibble
+	
+	x &= ~(1<<rs); 	
+	send_nibble(x);
+ 222:	81 2f       	mov	r24, r17
+ 224:	82 95       	swap	r24
+ 226:	80 7f       	andi	r24, 0xF0	; 240
+ 228:	0e 94 ef 00 	call	0x1de	; 0x1de <send_nibble>
+	
+//to send a cmd or data byte delay is 2 * 2.16ms = 4.32ms
+
+//so data rate is 1/4.32ms = 231 char's /second ; good enough for our display
+}
+ 22c:	1f 91       	pop	r17
+ 22e:	08 95       	ret
+
+00000230 <data>:
+
+
+
+
+void data(unsigned char var)
+{
+ 230:	1f 93       	push	r17
+ 232:	18 2f       	mov	r17, r24
+	unsigned char x;
+
+//send higher nibble
+	x = 0xf0 & var;  
+ 234:	80 7f       	andi	r24, 0xF0	; 240
+	
+	x |= (1<<rs); 	
+	send_nibble(x);
+ 236:	81 60       	ori	r24, 0x01	; 1
+ 238:	0e 94 ef 00 	call	0x1de	; 0x1de <send_nibble>
+
+//now send lower nibble
+	x = 0xf0 & (var<<4);  
+ 23c:	12 95       	swap	r17
+ 23e:	10 7f       	andi	r17, 0xF0	; 240
+	
+	x |= (1<<rs); 	
+	send_nibble(x);
+ 240:	81 2f       	mov	r24, r17
+ 242:	81 60       	ori	r24, 0x01	; 1
+ 244:	0e 94 ef 00 	call	0x1de	; 0x1de <send_nibble>
+
+	
+}
+ 248:	1f 91       	pop	r17
+ 24a:	08 95       	ret
+
+0000024c <lcd_init>:
+
+void lcd_init()
+{
+ 24c:	ef 92       	push	r14
+ 24e:	ff 92       	push	r15
+ 250:	1f 93       	push	r17
+
+//setting SIPO pins as output
+SIPODDR |= (1<<STB) | (1<<SPIN) | (1<<CLK);
+ 252:	84 b1       	in	r24, 0x04	; 4
+ 254:	88 63       	ori	r24, 0x38	; 56
+ 256:	84 b9       	out	0x04, r24	; 4
+ 258:	20 ed       	ldi	r18, 0xD0	; 208
+ 25a:	37 e0       	ldi	r19, 0x07	; 7
+ 25c:	4c e2       	ldi	r20, 0x2C	; 44
+ 25e:	51 e0       	ldi	r21, 0x01	; 1
+ 260:	ca 01       	movw	r24, r20
+ 262:	01 97       	sbiw	r24, 0x01	; 1
+ 264:	f1 f7       	brne	.-4      	; 0x262 <lcd_init+0x16>
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+		{
+			// wait 1/10 ms
+			_delay_loop_2(((F_CPU) / 4e3) / 10);
+			__ticks --;
+ 266:	21 50       	subi	r18, 0x01	; 1
+ 268:	30 40       	sbci	r19, 0x00	; 0
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+ 26a:	d1 f7       	brne	.-12     	; 0x260 <lcd_init+0x14>
+
+//proper initialization sequence
+	_delay_ms(200); //wait until lcd's internal startup finished
+	cmd(0x03);//first command
+ 26c:	83 e0       	ldi	r24, 0x03	; 3
+ 26e:	0e 94 0c 01 	call	0x218	; 0x218 <cmd>
+ 272:	38 e9       	ldi	r19, 0x98	; 152
+ 274:	e3 2e       	mov	r14, r19
+ 276:	3a e3       	ldi	r19, 0x3A	; 58
+ 278:	f3 2e       	mov	r15, r19
+ 27a:	c7 01       	movw	r24, r14
+ 27c:	01 97       	sbiw	r24, 0x01	; 1
+ 27e:	f1 f7       	brne	.-4      	; 0x27c <lcd_init+0x30>
+	_delay_ms(5);
+	cmd(0x03);//second command
+ 280:	83 e0       	ldi	r24, 0x03	; 3
+ 282:	0e 94 0c 01 	call	0x218	; 0x218 <cmd>
+    can be achieved.
+*/
+void
+_delay_loop_1(uint8_t __count)
+{
+	__asm__ volatile (
+ 286:	18 ec       	ldi	r17, 0xC8	; 200
+ 288:	81 2f       	mov	r24, r17
+ 28a:	8a 95       	dec	r24
+ 28c:	f1 f7       	brne	.-4      	; 0x28a <lcd_init+0x3e>
+	_delay_us(50);
+	cmd(0x03);//third command
+ 28e:	83 e0       	ldi	r24, 0x03	; 3
+ 290:	0e 94 0c 01 	call	0x218	; 0x218 <cmd>
+ 294:	81 2f       	mov	r24, r17
+ 296:	8a 95       	dec	r24
+ 298:	f1 f7       	brne	.-4      	; 0x296 <lcd_init+0x4a>
+	_delay_us(50);
+	cmd(0x02);//set 4 bit mode interface
+ 29a:	82 e0       	ldi	r24, 0x02	; 2
+ 29c:	0e 94 0c 01 	call	0x218	; 0x218 <cmd>
+ 2a0:	81 2f       	mov	r24, r17
+ 2a2:	8a 95       	dec	r24
+ 2a4:	f1 f7       	brne	.-4      	; 0x2a2 <lcd_init+0x56>
+	_delay_us(50);
+	cmd(0x28);//the real function set command
+ 2a6:	88 e2       	ldi	r24, 0x28	; 40
+ 2a8:	0e 94 0c 01 	call	0x218	; 0x218 <cmd>
+ 2ac:	81 2f       	mov	r24, r17
+ 2ae:	8a 95       	dec	r24
+ 2b0:	f1 f7       	brne	.-4      	; 0x2ae <lcd_init+0x62>
+	_delay_us(50);
+	cmd(0x08);//turn off display curcor, blink
+ 2b2:	88 e0       	ldi	r24, 0x08	; 8
+ 2b4:	0e 94 0c 01 	call	0x218	; 0x218 <cmd>
+    milliseconds can be achieved.
+ */
+void
+_delay_loop_2(uint16_t __count)
+{
+	__asm__ volatile (
+ 2b8:	8c e2       	ldi	r24, 0x2C	; 44
+ 2ba:	91 e0       	ldi	r25, 0x01	; 1
+ 2bc:	01 97       	sbiw	r24, 0x01	; 1
+ 2be:	f1 f7       	brne	.-4      	; 0x2bc <lcd_init+0x70>
+	_delay_us(100);
+	cmd(0x01);//clear display
+ 2c0:	81 e0       	ldi	r24, 0x01	; 1
+ 2c2:	0e 94 0c 01 	call	0x218	; 0x218 <cmd>
+ 2c6:	c7 01       	movw	r24, r14
+ 2c8:	01 97       	sbiw	r24, 0x01	; 1
+ 2ca:	f1 f7       	brne	.-4      	; 0x2c8 <lcd_init+0x7c>
+	_delay_ms(5);//allow enough time to write zeros to the whole ddram and cgram
+	cmd(0x06);//entry mode set
+ 2cc:	86 e0       	ldi	r24, 0x06	; 6
+ 2ce:	0e 94 0c 01 	call	0x218	; 0x218 <cmd>
+    can be achieved.
+*/
+void
+_delay_loop_1(uint8_t __count)
+{
+	__asm__ volatile (
+ 2d2:	81 2f       	mov	r24, r17
+ 2d4:	8a 95       	dec	r24
+ 2d6:	f1 f7       	brne	.-4      	; 0x2d4 <lcd_init+0x88>
+	_delay_us(50);
+	cmd(0x0e);//turn on display with 1DCB
+ 2d8:	8e e0       	ldi	r24, 0x0E	; 14
+ 2da:	0e 94 0c 01 	call	0x218	; 0x218 <cmd>
+ 2de:	81 2f       	mov	r24, r17
+ 2e0:	8a 95       	dec	r24
+ 2e2:	f1 f7       	brne	.-4      	; 0x2e0 <lcd_init+0x94>
+	_delay_us(50);
+	cmd(0x80);//set ddram address
+ 2e4:	80 e8       	ldi	r24, 0x80	; 128
+ 2e6:	0e 94 0c 01 	call	0x218	; 0x218 <cmd>
+ 2ea:	1a 95       	dec	r17
+ 2ec:	f1 f7       	brne	.-4      	; 0x2ea <lcd_init+0x9e>
+	_delay_us(50);
+}
+ 2ee:	1f 91       	pop	r17
+ 2f0:	ff 90       	pop	r15
+ 2f2:	ef 90       	pop	r14
+ 2f4:	08 95       	ret
+
+000002f6 <print>:
+}
+
+
+
+void print(char* sym,unsigned char startadd)
+{
+ 2f6:	ef 92       	push	r14
+ 2f8:	ff 92       	push	r15
+ 2fa:	0f 93       	push	r16
+ 2fc:	1f 93       	push	r17
+ 2fe:	cf 93       	push	r28
+ 300:	df 93       	push	r29
+ 302:	7c 01       	movw	r14, r24
+ 304:	16 2f       	mov	r17, r22
+	unsigned char i=0;
+
+	if(startadd<0x80 || startadd>0xcf)
+ 306:	86 2f       	mov	r24, r22
+ 308:	80 58       	subi	r24, 0x80	; 128
+ 30a:	80 35       	cpi	r24, 0x50	; 80
+ 30c:	e8 f4       	brcc	.+58     	; 0x348 <print+0x52>
+		return;
+	else 
+		cmd(startadd);
+ 30e:	86 2f       	mov	r24, r22
+ 310:	0e 94 0c 01 	call	0x218	; 0x218 <cmd>
+ 314:	00 e0       	ldi	r16, 0x00	; 0
+ 316:	12 c0       	rjmp	.+36     	; 0x33c <print+0x46>
+
+	while(sym[i]!='\0')
+	{
+
+		if(startadd==0x90)
+ 318:	10 39       	cpi	r17, 0x90	; 144
+ 31a:	29 f4       	brne	.+10     	; 0x326 <print+0x30>
+		{
+				cmd(0xc0);
+ 31c:	80 ec       	ldi	r24, 0xC0	; 192
+ 31e:	0e 94 0c 01 	call	0x218	; 0x218 <cmd>
+ 322:	10 ec       	ldi	r17, 0xC0	; 192
+ 324:	06 c0       	rjmp	.+12     	; 0x332 <print+0x3c>
+				startadd=0xc0;
+		}
+		else if(startadd==0xD0)
+ 326:	10 3d       	cpi	r17, 0xD0	; 208
+ 328:	21 f4       	brne	.+8      	; 0x332 <print+0x3c>
+		{
+			cmd(0x01);
+ 32a:	81 e0       	ldi	r24, 0x01	; 1
+ 32c:	0e 94 0c 01 	call	0x218	; 0x218 <cmd>
+ 330:	10 e8       	ldi	r17, 0x80	; 128
+			startadd=0x80;
+		}
+	
+		data(sym[i]);
+ 332:	88 81       	ld	r24, Y
+ 334:	0e 94 18 01 	call	0x230	; 0x230 <data>
+		i++;
+ 338:	0f 5f       	subi	r16, 0xFF	; 255
+		startadd++;
+ 33a:	1f 5f       	subi	r17, 0xFF	; 255
+	if(startadd<0x80 || startadd>0xcf)
+		return;
+	else 
+		cmd(startadd);
+
+	while(sym[i]!='\0')
+ 33c:	e7 01       	movw	r28, r14
+ 33e:	c0 0f       	add	r28, r16
+ 340:	d1 1d       	adc	r29, r1
+ 342:	88 81       	ld	r24, Y
+ 344:	88 23       	and	r24, r24
+ 346:	41 f7       	brne	.-48     	; 0x318 <print+0x22>
+		data(sym[i]);
+		i++;
+		startadd++;
+	}
+
+}
+ 348:	df 91       	pop	r29
+ 34a:	cf 91       	pop	r28
+ 34c:	1f 91       	pop	r17
+ 34e:	0f 91       	pop	r16
+ 350:	ff 90       	pop	r15
+ 352:	ef 90       	pop	r14
+ 354:	08 95       	ret
+
+00000356 <printstack>:
+
+
+}
+
+void printstack()
+{
+ 356:	ff 92       	push	r15
+ 358:	0f 93       	push	r16
+ 35a:	1f 93       	push	r17
+ 35c:	cf 93       	push	r28
+ 35e:	df 93       	push	r29
+	int8_t i;
+	for(i=top;i>=0;i--)
+ 360:	f0 90 03 02 	lds	r15, 0x0203
+ 364:	cf 2d       	mov	r28, r15
+ 366:	dd 27       	eor	r29, r29
+ 368:	c7 fd       	sbrc	r28, 7
+ 36a:	d0 95       	com	r29
+ 36c:	c7 5f       	subi	r28, 0xF7	; 247
+ 36e:	dd 4f       	sbci	r29, 0xFD	; 253
+ 370:	00 e0       	ldi	r16, 0x00	; 0
+ 372:	10 e0       	ldi	r17, 0x00	; 0
+ 374:	06 c0       	rjmp	.+12     	; 0x382 <printstack+0x2c>
+	data(stack[i]);
+ 376:	88 81       	ld	r24, Y
+ 378:	0e 94 18 01 	call	0x230	; 0x230 <data>
+ 37c:	0f 5f       	subi	r16, 0xFF	; 255
+ 37e:	1f 4f       	sbci	r17, 0xFF	; 255
+ 380:	21 97       	sbiw	r28, 0x01	; 1
+}
+
+void printstack()
+{
+	int8_t i;
+	for(i=top;i>=0;i--)
+ 382:	8f 2d       	mov	r24, r15
+ 384:	80 1b       	sub	r24, r16
+ 386:	87 ff       	sbrs	r24, 7
+ 388:	f6 cf       	rjmp	.-20     	; 0x376 <printstack+0x20>
+	data(stack[i]);
+	top = -1; // re-initialize stack pointer
+ 38a:	8f ef       	ldi	r24, 0xFF	; 255
+ 38c:	9f ef       	ldi	r25, 0xFF	; 255
+ 38e:	90 93 04 02 	sts	0x0204, r25
+ 392:	80 93 03 02 	sts	0x0203, r24
+		
+}
+ 396:	df 91       	pop	r29
+ 398:	cf 91       	pop	r28
+ 39a:	1f 91       	pop	r17
+ 39c:	0f 91       	pop	r16
+ 39e:	ff 90       	pop	r15
+ 3a0:	08 95       	ret
+
+000003a2 <read_buffer>:
+		return 1;
+	else return 0;
+}
+
+void read_buffer()
+{
+ 3a2:	ef 92       	push	r14
+ 3a4:	ff 92       	push	r15
+ 3a6:	1f 93       	push	r17
+ 3a8:	cf 93       	push	r28
+ 3aa:	df 93       	push	r29
+//this function prints the buffer contents into the lcd
+
+	cmd(0x01);
+ 3ac:	81 e0       	ldi	r24, 0x01	; 1
+ 3ae:	0e 94 0c 01 	call	0x218	; 0x218 <cmd>
+ 3b2:	10 e0       	ldi	r17, 0x00	; 0
+    milliseconds can be achieved.
+ */
+void
+_delay_loop_2(uint16_t __count)
+{
+	__asm__ volatile (
+ 3b4:	4c e2       	ldi	r20, 0x2C	; 44
+ 3b6:	e4 2e       	mov	r14, r20
+ 3b8:	41 e0       	ldi	r20, 0x01	; 1
+ 3ba:	f4 2e       	mov	r15, r20
+ 3bc:	1e c0       	rjmp	.+60     	; 0x3fa <read_buffer+0x58>
+	
+	for(uint8_t i=0;i<buffer_index;i++)
+	{
+		data(gsm_buffer[i]);
+ 3be:	c1 2f       	mov	r28, r17
+ 3c0:	d0 e0       	ldi	r29, 0x00	; 0
+ 3c2:	fe 01       	movw	r30, r28
+ 3c4:	e3 5e       	subi	r30, 0xE3	; 227
+ 3c6:	fd 4f       	sbci	r31, 0xFD	; 253
+ 3c8:	80 81       	ld	r24, Z
+ 3ca:	0e 94 18 01 	call	0x230	; 0x230 <data>
+		if(i%32==0)
+ 3ce:	ce 01       	movw	r24, r28
+ 3d0:	8f 71       	andi	r24, 0x1F	; 31
+ 3d2:	90 70       	andi	r25, 0x00	; 0
+ 3d4:	89 2b       	or	r24, r25
+ 3d6:	49 f4       	brne	.+18     	; 0x3ea <read_buffer+0x48>
+ 3d8:	80 e2       	ldi	r24, 0x20	; 32
+ 3da:	9e e4       	ldi	r25, 0x4E	; 78
+ 3dc:	f7 01       	movw	r30, r14
+ 3de:	31 97       	sbiw	r30, 0x01	; 1
+ 3e0:	f1 f7       	brne	.-4      	; 0x3de <read_buffer+0x3c>
+		{
+			// wait 1/10 ms
+			_delay_loop_2(((F_CPU) / 4e3) / 10);
+			__ticks --;
+ 3e2:	01 97       	sbiw	r24, 0x01	; 1
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+ 3e4:	d9 f7       	brne	.-10     	; 0x3dc <read_buffer+0x3a>
+		{
+			_delay_ms(2000);
+			cmd(0x01);
+ 3e6:	81 e0       	ldi	r24, 0x01	; 1
+ 3e8:	05 c0       	rjmp	.+10     	; 0x3f4 <read_buffer+0x52>
+		}
+		else if(i%16==0)
+ 3ea:	cf 70       	andi	r28, 0x0F	; 15
+ 3ec:	d0 70       	andi	r29, 0x00	; 0
+ 3ee:	cd 2b       	or	r28, r29
+ 3f0:	19 f4       	brne	.+6      	; 0x3f8 <read_buffer+0x56>
+		{
+			cmd(0xc0);
+ 3f2:	80 ec       	ldi	r24, 0xC0	; 192
+ 3f4:	0e 94 0c 01 	call	0x218	; 0x218 <cmd>
+{
+//this function prints the buffer contents into the lcd
+
+	cmd(0x01);
+	
+	for(uint8_t i=0;i<buffer_index;i++)
+ 3f8:	1f 5f       	subi	r17, 0xFF	; 255
+ 3fa:	80 91 06 02 	lds	r24, 0x0206
+ 3fe:	18 17       	cp	r17, r24
+ 400:	f0 f2       	brcs	.-68     	; 0x3be <read_buffer+0x1c>
+			cmd(0xc0);
+		}
+	}
+
+
+}
+ 402:	df 91       	pop	r29
+ 404:	cf 91       	pop	r28
+ 406:	1f 91       	pop	r17
+ 408:	ff 90       	pop	r15
+ 40a:	ef 90       	pop	r14
+ 40c:	08 95       	ret
+
+0000040e <reset_timer>:
+	
+}
+
+void reset_timer()
+{
+	TCCR0B = (1<<CS00) | (1<<CS02); //clk prescaler of clk/1024
+ 40e:	85 e0       	ldi	r24, 0x05	; 5
+ 410:	85 bd       	out	0x25, r24	; 37
+	TCNT0 = 0;
+ 412:	16 bc       	out	0x26, r1	; 38
+	timer = 0;
+ 414:	10 92 07 02 	sts	0x0207, r1
+}
+ 418:	08 95       	ret
+
+0000041a <__vector_18>:
+
+
+
+
+ISR(USART_RX_vect)
+{
+ 41a:	1f 92       	push	r1
+ 41c:	0f 92       	push	r0
+ 41e:	0f b6       	in	r0, 0x3f	; 63
+ 420:	0f 92       	push	r0
+ 422:	11 24       	eor	r1, r1
+ 424:	2f 93       	push	r18
+ 426:	3f 93       	push	r19
+ 428:	8f 93       	push	r24
+ 42a:	9f 93       	push	r25
+ 42c:	ef 93       	push	r30
+ 42e:	ff 93       	push	r31
+	
+	new_data=1;//when this variable is set to 1 then i can check in the main loop
+ 430:	91 e0       	ldi	r25, 0x01	; 1
+ 432:	90 93 08 02 	sts	0x0208, r25
+	buffer_index =0; //that there is some new data in buffer to decode.
+	timer = 0;
+ 436:	10 92 07 02 	sts	0x0207, r1
+	
+	gsm_buffer[buffer_index] = UDR0;
+ 43a:	80 91 c6 00 	lds	r24, 0x00C6
+ 43e:	80 93 1d 02 	sts	0x021D, r24
+	
+	//this algorithm makes sure that it stops waiting for characters if there is
+	//more than 1s delay between characters as according to our clock frequency
+	//and timer prescaler value set a value of 45 will result in approx delay of 1s.
+
+	for(buffer_index=1;buffer_index<100 && timer < 45;buffer_index++)
+ 442:	90 93 06 02 	sts	0x0206, r25
+ 446:	90 e0       	ldi	r25, 0x00	; 0
+ 448:	21 e0       	ldi	r18, 0x01	; 1
+	
+}
+
+void reset_timer()
+{
+	TCCR0B = (1<<CS00) | (1<<CS02); //clk prescaler of clk/1024
+ 44a:	35 e0       	ldi	r19, 0x05	; 5
+ 44c:	18 c0       	rjmp	.+48     	; 0x47e <__vector_18+0x64>
+ 44e:	35 bd       	out	0x25, r19	; 37
+	TCNT0 = 0;
+ 450:	16 bc       	out	0x26, r1	; 38
+ 452:	90 e0       	ldi	r25, 0x00	; 0
+ 454:	04 c0       	rjmp	.+8      	; 0x45e <__vector_18+0x44>
+		
+		reset_timer();
+
+		while(!(UCSR0A & (1<<RXC0)) && timer < 45)
+		{
+			if(TIFR0 & (1<<TOV0))
+ 456:	a8 9b       	sbis	0x15, 0	; 21
+ 458:	02 c0       	rjmp	.+4      	; 0x45e <__vector_18+0x44>
+			{
+				timer++;
+				TIFR0 |= (1<<TOV0); 
+ 45a:	a8 9a       	sbi	0x15, 0	; 21
+ 45c:	9f 5f       	subi	r25, 0xFF	; 255
+	for(buffer_index=1;buffer_index<100 && timer < 45;buffer_index++)
+	{	
+		
+		reset_timer();
+
+		while(!(UCSR0A & (1<<RXC0)) && timer < 45)
+ 45e:	80 91 c0 00 	lds	r24, 0x00C0
+ 462:	87 fd       	sbrc	r24, 7
+ 464:	02 c0       	rjmp	.+4      	; 0x46a <__vector_18+0x50>
+ 466:	9d 32       	cpi	r25, 0x2D	; 45
+ 468:	b0 f3       	brcs	.-20     	; 0x456 <__vector_18+0x3c>
+				timer++;
+				TIFR0 |= (1<<TOV0); 
+			}
+		}
+
+		if(timer < 45) //so that no garbage is written
+ 46a:	9d 32       	cpi	r25, 0x2D	; 45
+ 46c:	38 f4       	brcc	.+14     	; 0x47c <__vector_18+0x62>
+		gsm_buffer[buffer_index] = UDR0;
+ 46e:	80 91 c6 00 	lds	r24, 0x00C6
+ 472:	e2 2f       	mov	r30, r18
+ 474:	f0 e0       	ldi	r31, 0x00	; 0
+ 476:	e3 5e       	subi	r30, 0xE3	; 227
+ 478:	fd 4f       	sbci	r31, 0xFD	; 253
+ 47a:	80 83       	st	Z, r24
+ 47c:	2f 5f       	subi	r18, 0xFF	; 255
+	
+	//this algorithm makes sure that it stops waiting for characters if there is
+	//more than 1s delay between characters as according to our clock frequency
+	//and timer prescaler value set a value of 45 will result in approx delay of 1s.
+
+	for(buffer_index=1;buffer_index<100 && timer < 45;buffer_index++)
+ 47e:	24 36       	cpi	r18, 0x64	; 100
+ 480:	10 f4       	brcc	.+4      	; 0x486 <__vector_18+0x6c>
+ 482:	9d 32       	cpi	r25, 0x2D	; 45
+ 484:	20 f3       	brcs	.-56     	; 0x44e <__vector_18+0x34>
+ 486:	90 93 07 02 	sts	0x0207, r25
+ 48a:	20 93 06 02 	sts	0x0206, r18
+
+		if(timer < 45) //so that no garbage is written
+		gsm_buffer[buffer_index] = UDR0;
+	}
+
+}
+ 48e:	ff 91       	pop	r31
+ 490:	ef 91       	pop	r30
+ 492:	9f 91       	pop	r25
+ 494:	8f 91       	pop	r24
+ 496:	3f 91       	pop	r19
+ 498:	2f 91       	pop	r18
+ 49a:	0f 90       	pop	r0
+ 49c:	0f be       	out	0x3f, r0	; 63
+ 49e:	0f 90       	pop	r0
+ 4a0:	1f 90       	pop	r1
+ 4a2:	18 95       	reti
+
+000004a4 <check_response>:
+unsigned char buffer_index = 0; //buffer index pointer
+unsigned char timer = 0,new_data=0;
+
+
+int check_response(char * input)
+{
+ 4a4:	bc 01       	movw	r22, r24
+	char * resp; //this function searches for the input string in the buffer
+				//and returns 1 if it is found.
+	resp = strstr(gsm_buffer,input); //strstr() is  case sensitive
+ 4a6:	8d e1       	ldi	r24, 0x1D	; 29
+ 4a8:	92 e0       	ldi	r25, 0x02	; 2
+ 4aa:	0e 94 d5 03 	call	0x7aa	; 0x7aa <strstr>
+ 4ae:	9c 01       	movw	r18, r24
+ 4b0:	00 97       	sbiw	r24, 0x00	; 0
+ 4b2:	11 f0       	breq	.+4      	; 0x4b8 <check_response+0x14>
+ 4b4:	21 e0       	ldi	r18, 0x01	; 1
+ 4b6:	30 e0       	ldi	r19, 0x00	; 0
+	if(resp)
+		return 1;
+	else return 0;
+}
+ 4b8:	c9 01       	movw	r24, r18
+ 4ba:	08 95       	ret
+
+000004bc <gsm_cmd>:
+
+}
+
+
+int gsm_cmd(char * arg)
+{
+ 4bc:	ac 01       	movw	r20, r24
+	buffer_index=0;
+ 4be:	10 92 06 02 	sts	0x0206, r1
+	
+	cli(); //disable interrupts before the whole string is sent because
+ 4c2:	f8 94       	cli
+ 4c4:	20 e0       	ldi	r18, 0x00	; 0
+ 4c6:	0c c0       	rjmp	.+24     	; 0x4e0 <gsm_cmd+0x24>
+	return data;
+}
+
+void uart_write(unsigned char data)
+{
+	UDR0=data;
+ 4c8:	e0 93 c6 00 	sts	0x00C6, r30
+	while(!(UCSR0A & (1<<UDRE0)));
+ 4cc:	80 91 c0 00 	lds	r24, 0x00C0
+ 4d0:	85 ff       	sbrs	r24, 5
+ 4d2:	fc cf       	rjmp	.-8      	; 0x4cc <gsm_cmd+0x10>
+	UCSR0A |= (1<<UDRE0);
+ 4d4:	80 91 c0 00 	lds	r24, 0x00C0
+ 4d8:	80 62       	ori	r24, 0x20	; 32
+ 4da:	80 93 c0 00 	sts	0x00C0, r24
+{
+	uint8_t i=0;
+	while(string[i] != '\0')
+	{
+		uart_write(string[i]);
+		i++;
+ 4de:	2f 5f       	subi	r18, 0xFF	; 255
+}
+
+void u_print(char * string)
+{
+	uint8_t i=0;
+	while(string[i] != '\0')
+ 4e0:	fa 01       	movw	r30, r20
+ 4e2:	e2 0f       	add	r30, r18
+ 4e4:	f1 1d       	adc	r31, r1
+ 4e6:	e0 81       	ld	r30, Z
+ 4e8:	ee 23       	and	r30, r30
+ 4ea:	71 f7       	brne	.-36     	; 0x4c8 <gsm_cmd+0xc>
+	return data;
+}
+
+void uart_write(unsigned char data)
+{
+	UDR0=data;
+ 4ec:	8d e0       	ldi	r24, 0x0D	; 13
+ 4ee:	80 93 c6 00 	sts	0x00C6, r24
+	while(!(UCSR0A & (1<<UDRE0)));
+ 4f2:	80 91 c0 00 	lds	r24, 0x00C0
+ 4f6:	85 ff       	sbrs	r24, 5
+ 4f8:	fc cf       	rjmp	.-8      	; 0x4f2 <gsm_cmd+0x36>
+	UCSR0A |= (1<<UDRE0);
+ 4fa:	80 91 c0 00 	lds	r24, 0x00C0
+ 4fe:	80 62       	ori	r24, 0x20	; 32
+ 500:	80 93 c0 00 	sts	0x00C0, r24
+
+	uart_write('\r'); //after every command either \r carriage return or 0x0D has to be given it is same
+					//as pressing enter
+					//uart_write(0x0D);
+
+	sei(); //set interrupt again to recieve response 
+ 504:	78 94       	sei
+ 506:	88 e8       	ldi	r24, 0x88	; 136
+ 508:	93 e1       	ldi	r25, 0x13	; 19
+ 50a:	2c e2       	ldi	r18, 0x2C	; 44
+ 50c:	31 e0       	ldi	r19, 0x01	; 1
+ 50e:	f9 01       	movw	r30, r18
+ 510:	31 97       	sbiw	r30, 0x01	; 1
+ 512:	f1 f7       	brne	.-4      	; 0x510 <gsm_cmd+0x54>
+		{
+			// wait 1/10 ms
+			_delay_loop_2(((F_CPU) / 4e3) / 10);
+			__ticks --;
+ 514:	01 97       	sbiw	r24, 0x01	; 1
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+ 516:	d9 f7       	brne	.-10     	; 0x50e <gsm_cmd+0x52>
+	
+	_delay_ms(500); //delay to allow data to be buffered via RXC interrupt
+	if(check_response("OK"))
+ 518:	80 e0       	ldi	r24, 0x00	; 0
+ 51a:	91 e0       	ldi	r25, 0x01	; 1
+ 51c:	0e 94 52 02 	call	0x4a4	; 0x4a4 <check_response>
+ 520:	9c 01       	movw	r18, r24
+ 522:	00 97       	sbiw	r24, 0x00	; 0
+ 524:	11 f0       	breq	.+4      	; 0x52a <gsm_cmd+0x6e>
+ 526:	21 e0       	ldi	r18, 0x01	; 1
+ 528:	30 e0       	ldi	r19, 0x00	; 0
+
+	else return 0;
+
+//	read_buffer();	//print the data to lcd now
+	
+}
+ 52a:	c9 01       	movw	r24, r18
+ 52c:	08 95       	ret
+
+0000052e <gsm_init>:
+{
+	//note uart must be initialised with gsm matching baud before calling this
+	//recieve complete interrupt must also be set 
+
+	
+	if(!gsm_cmd("AT"))//if this command returns 0 then there is communication error between
+ 52e:	83 e0       	ldi	r24, 0x03	; 3
+ 530:	91 e0       	ldi	r25, 0x01	; 1
+ 532:	0e 94 5e 02 	call	0x4bc	; 0x4bc <gsm_cmd>
+ 536:	89 2b       	or	r24, r25
+ 538:	19 f4       	brne	.+6      	; 0x540 <gsm_init+0x12>
+ 53a:	20 e0       	ldi	r18, 0x00	; 0
+ 53c:	30 e0       	ldi	r19, 0x00	; 0
+ 53e:	0e c0       	rjmp	.+28     	; 0x55c <gsm_init+0x2e>
+		return 0;		//modem and microcontroller or there might be no network
+						//as it may give a "NO CARRIER" response
+
+	
+//	gsm_cmd("ATI"); //modem information, this is not necessary for initiation
+	gsm_cmd("AT+CLIP=1");//tells the modem to send caller id to UART along with RING
+ 540:	86 e0       	ldi	r24, 0x06	; 6
+ 542:	91 e0       	ldi	r25, 0x01	; 1
+ 544:	0e 94 5e 02 	call	0x4bc	; 0x4bc <gsm_cmd>
+	gsm_cmd("AT+CMGF=1");//tells the modem that sms mode is in TEXT mode not PUD.
+ 548:	80 e1       	ldi	r24, 0x10	; 16
+ 54a:	91 e0       	ldi	r25, 0x01	; 1
+ 54c:	0e 94 5e 02 	call	0x4bc	; 0x4bc <gsm_cmd>
+	gsm_cmd("AT+CNMI=2,2,0,0");//tells the modem to send the sms text, mobile number and 
+ 550:	8a e1       	ldi	r24, 0x1A	; 26
+ 552:	91 e0       	ldi	r25, 0x01	; 1
+ 554:	0e 94 5e 02 	call	0x4bc	; 0x4bc <gsm_cmd>
+ 558:	21 e0       	ldi	r18, 0x01	; 1
+ 55a:	30 e0       	ldi	r19, 0x00	; 0
+	//also date and time of receipt instead of just sending a new msg notification 
+
+	return 1;	
+
+}
+ 55c:	c9 01       	movw	r24, r18
+ 55e:	08 95       	ret
+
+00000560 <lcd_print>:
+	_delay_us(50);
+}
+
+
+void lcd_print(char* msg,...)
+{
+ 560:	df 93       	push	r29
+ 562:	cf 93       	push	r28
+ 564:	cd b7       	in	r28, 0x3d	; 61
+ 566:	de b7       	in	r29, 0x3e	; 62
+ 568:	2d 81       	ldd	r18, Y+5	; 0x05
+ 56a:	3e 81       	ldd	r19, Y+6	; 0x06
+	int x;
+	va_list arg_list;//declare "arg_list" a variable of type va_list
+	va_start(arg_list,msg);//initialize the variable with "va_start" which takes 
+							//two arguments the list and first argument in this function		
+	x=va_arg(arg_list,int);//when va_arg is called with the argument of list and a datatype 
+ 56c:	6f 81       	ldd	r22, Y+7	; 0x07
+ 56e:	78 85       	ldd	r23, Y+8	; 0x08
+						// it returns next value of that type in the list if it exists
+						//if it doesn't exist if returns NULL or 0 (tested in Turbo C)
+	if(x>=0x80 && x<=0xcf)//so i don't want to check because i only want one argument to be
+ 570:	cb 01       	movw	r24, r22
+ 572:	80 58       	subi	r24, 0x80	; 128
+ 574:	90 40       	sbci	r25, 0x00	; 0
+ 576:	80 35       	cpi	r24, 0x50	; 80
+ 578:	91 05       	cpc	r25, r1
+ 57a:	10 f4       	brcc	.+4      	; 0x580 <lcd_print+0x20>
+	print(msg,x);	//optional so i directly get the address and specify which should be
+ 57c:	c9 01       	movw	r24, r18
+ 57e:	02 c0       	rjmp	.+4      	; 0x584 <lcd_print+0x24>
+						//the next argument in the calling function(caller)
+	
+	else
+	print(msg,0x80);
+ 580:	c9 01       	movw	r24, r18
+ 582:	60 e8       	ldi	r22, 0x80	; 128
+ 584:	0e 94 7b 01 	call	0x2f6	; 0x2f6 <print>
+
+	va_end(arg_list); //clear the memory used by arg_list variable
+}
+ 588:	cf 91       	pop	r28
+ 58a:	df 91       	pop	r29
+ 58c:	08 95       	ret
+
+0000058e <main>:
+
+
+int main()
+{
+ 58e:	0f 93       	push	r16
+ 590:	1f 93       	push	r17
+ 592:	cf 93       	push	r28
+ 594:	df 93       	push	r29
+	lcd_init();
+ 596:	0e 94 26 01 	call	0x24c	; 0x24c <lcd_init>
+	
+	if(uart_init(9600)) //the modem is either supporting or configured for 9600 BAUD rate
+ 59a:	60 e8       	ldi	r22, 0x80	; 128
+ 59c:	75 e2       	ldi	r23, 0x25	; 37
+ 59e:	80 e0       	ldi	r24, 0x00	; 0
+ 5a0:	90 e0       	ldi	r25, 0x00	; 0
+ 5a2:	0e 94 53 00 	call	0xa6	; 0xa6 <uart_init>
+ 5a6:	89 2b       	or	r24, r25
+ 5a8:	21 f0       	breq	.+8      	; 0x5b2 <main+0x24>
+		lcd_print("UART_initialised");
+ 5aa:	00 d0       	rcall	.+0      	; 0x5ac <main+0x1e>
+ 5ac:	8a e2       	ldi	r24, 0x2A	; 42
+ 5ae:	91 e0       	ldi	r25, 0x01	; 1
+ 5b0:	03 c0       	rjmp	.+6      	; 0x5b8 <main+0x2a>
+
+	else lcd_print("Error initiating UART");
+ 5b2:	00 d0       	rcall	.+0      	; 0x5b4 <main+0x26>
+ 5b4:	8b e3       	ldi	r24, 0x3B	; 59
+ 5b6:	91 e0       	ldi	r25, 0x01	; 1
+ 5b8:	ed b7       	in	r30, 0x3d	; 61
+ 5ba:	fe b7       	in	r31, 0x3e	; 62
+ 5bc:	92 83       	std	Z+2, r25	; 0x02
+ 5be:	81 83       	std	Z+1, r24	; 0x01
+ 5c0:	0e 94 b0 02 	call	0x560	; 0x560 <lcd_print>
+ 5c4:	0f 90       	pop	r0
+ 5c6:	0f 90       	pop	r0
+ 5c8:	80 e1       	ldi	r24, 0x10	; 16
+ 5ca:	97 e2       	ldi	r25, 0x27	; 39
+ 5cc:	2c e2       	ldi	r18, 0x2C	; 44
+ 5ce:	31 e0       	ldi	r19, 0x01	; 1
+ 5d0:	f9 01       	movw	r30, r18
+ 5d2:	31 97       	sbiw	r30, 0x01	; 1
+ 5d4:	f1 f7       	brne	.-4      	; 0x5d2 <main+0x44>
+		{
+			// wait 1/10 ms
+			_delay_loop_2(((F_CPU) / 4e3) / 10);
+			__ticks --;
+ 5d6:	01 97       	sbiw	r24, 0x01	; 1
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+ 5d8:	d9 f7       	brne	.-10     	; 0x5d0 <main+0x42>
+	
+	_delay_ms(1000);
+
+	lcd_print("Please wait initiating GSM...");
+ 5da:	00 d0       	rcall	.+0      	; 0x5dc <main+0x4e>
+ 5dc:	81 e5       	ldi	r24, 0x51	; 81
+ 5de:	91 e0       	ldi	r25, 0x01	; 1
+ 5e0:	ed b7       	in	r30, 0x3d	; 61
+ 5e2:	fe b7       	in	r31, 0x3e	; 62
+ 5e4:	92 83       	std	Z+2, r25	; 0x02
+ 5e6:	81 83       	std	Z+1, r24	; 0x01
+ 5e8:	0e 94 b0 02 	call	0x560	; 0x560 <lcd_print>
+
+	
+	UCSR0B |= (1<<RXCIE0); //turn on USART Receive complete interrupt
+ 5ec:	80 91 c1 00 	lds	r24, 0x00C1
+ 5f0:	80 68       	ori	r24, 0x80	; 128
+ 5f2:	80 93 c1 00 	sts	0x00C1, r24
+	sei();		//turn on global interrupt
+ 5f6:	78 94       	sei
+	
+	
+	if(gsm_init()) //send the basic commands to the gsm modem required for 
+ 5f8:	0f 90       	pop	r0
+ 5fa:	0f 90       	pop	r0
+ 5fc:	0e 94 97 02 	call	0x52e	; 0x52e <gsm_init>
+ 600:	89 2b       	or	r24, r25
+ 602:	39 f0       	breq	.+14     	; 0x612 <main+0x84>
+	{             //properly receving sms and call number in serial mode
+		cmd(0x01);
+ 604:	81 e0       	ldi	r24, 0x01	; 1
+ 606:	0e 94 0c 01 	call	0x218	; 0x218 <cmd>
+		lcd_print("GSM Initialised");
+ 60a:	00 d0       	rcall	.+0      	; 0x60c <main+0x7e>
+ 60c:	8f e6       	ldi	r24, 0x6F	; 111
+ 60e:	91 e0       	ldi	r25, 0x01	; 1
+ 610:	06 c0       	rjmp	.+12     	; 0x61e <main+0x90>
+		
+	}
+	else
+	{ 
+		cmd(0x01);
+ 612:	81 e0       	ldi	r24, 0x01	; 1
+ 614:	0e 94 0c 01 	call	0x218	; 0x218 <cmd>
+		lcd_print("Error initiating GSM");
+ 618:	00 d0       	rcall	.+0      	; 0x61a <main+0x8c>
+ 61a:	8f e7       	ldi	r24, 0x7F	; 127
+ 61c:	91 e0       	ldi	r25, 0x01	; 1
+ 61e:	ed b7       	in	r30, 0x3d	; 61
+ 620:	fe b7       	in	r31, 0x3e	; 62
+ 622:	92 83       	std	Z+2, r25	; 0x02
+ 624:	81 83       	std	Z+1, r24	; 0x01
+ 626:	0e 94 b0 02 	call	0x560	; 0x560 <lcd_print>
+ 62a:	0f 90       	pop	r0
+ 62c:	0f 90       	pop	r0
+ 62e:	80 e3       	ldi	r24, 0x30	; 48
+ 630:	95 e7       	ldi	r25, 0x75	; 117
+ 632:	2c e2       	ldi	r18, 0x2C	; 44
+ 634:	31 e0       	ldi	r19, 0x01	; 1
+ 636:	f9 01       	movw	r30, r18
+ 638:	31 97       	sbiw	r30, 0x01	; 1
+ 63a:	f1 f7       	brne	.-4      	; 0x638 <main+0xaa>
+		{
+			// wait 1/10 ms
+			_delay_loop_2(((F_CPU) / 4e3) / 10);
+			__ticks --;
+ 63c:	01 97       	sbiw	r24, 0x01	; 1
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+ 63e:	d9 f7       	brne	.-10     	; 0x636 <main+0xa8>
+				}
+			
+				else
+				{
+					//action to take when a call from any other number is received
+					lcd_print("Someone else calling");
+ 640:	00 ec       	ldi	r16, 0xC0	; 192
+ 642:	11 e0       	ldi	r17, 0x01	; 1
+			{
+				cmd(0x01);
+				if(check_response("9437409515")) 
+				{
+					//action to take when a call from above number is received
+					lcd_print("call received from my phone");
+ 644:	c4 ea       	ldi	r28, 0xA4	; 164
+ 646:	d1 e0       	ldi	r29, 0x01	; 1
+	{//this whole part below can be kept inside the ISR itself
+	//but i wanted to demonstrate how can we read the data saved
+	//by the isr properly and when data is continuously sent by other device.
+		
+
+		if(new_data)
+ 648:	80 91 08 02 	lds	r24, 0x0208
+ 64c:	88 23       	and	r24, r24
+ 64e:	d1 f1       	breq	.+116    	; 0x6c4 <main+0x136>
+		{	
+			cli();
+ 650:	f8 94       	cli
+			new_data=0;//another mechanism would be that i would first 
+ 652:	10 92 08 02 	sts	0x0208, r1
+
+					//but since strstr() function does the same thing 
+					//it saves my time and effort
+			
+			//call interfacing part
+			if(check_response("RING"))
+ 656:	84 e9       	ldi	r24, 0x94	; 148
+ 658:	91 e0       	ldi	r25, 0x01	; 1
+ 65a:	0e 94 52 02 	call	0x4a4	; 0x4a4 <check_response>
+ 65e:	89 2b       	or	r24, r25
+ 660:	c9 f0       	breq	.+50     	; 0x694 <main+0x106>
+			{
+				cmd(0x01);
+ 662:	81 e0       	ldi	r24, 0x01	; 1
+ 664:	0e 94 0c 01 	call	0x218	; 0x218 <cmd>
+				if(check_response("9437409515")) 
+ 668:	89 e9       	ldi	r24, 0x99	; 153
+ 66a:	91 e0       	ldi	r25, 0x01	; 1
+ 66c:	0e 94 52 02 	call	0x4a4	; 0x4a4 <check_response>
+ 670:	89 2b       	or	r24, r25
+ 672:	31 f0       	breq	.+12     	; 0x680 <main+0xf2>
+				{
+					//action to take when a call from above number is received
+					lcd_print("call received from my phone");
+ 674:	00 d0       	rcall	.+0      	; 0x676 <main+0xe8>
+ 676:	ed b7       	in	r30, 0x3d	; 61
+ 678:	fe b7       	in	r31, 0x3e	; 62
+ 67a:	d2 83       	std	Z+2, r29	; 0x02
+ 67c:	c1 83       	std	Z+1, r28	; 0x01
+ 67e:	05 c0       	rjmp	.+10     	; 0x68a <main+0xfc>
+				}
+			
+				else
+				{
+					//action to take when a call from any other number is received
+					lcd_print("Someone else calling");
+ 680:	00 d0       	rcall	.+0      	; 0x682 <main+0xf4>
+ 682:	ed b7       	in	r30, 0x3d	; 61
+ 684:	fe b7       	in	r31, 0x3e	; 62
+ 686:	12 83       	std	Z+2, r17	; 0x02
+ 688:	01 83       	std	Z+1, r16	; 0x01
+ 68a:	0e 94 b0 02 	call	0x560	; 0x560 <lcd_print>
+ 68e:	0f 90       	pop	r0
+ 690:	0f 90       	pop	r0
+ 692:	18 c0       	rjmp	.+48     	; 0x6c4 <main+0x136>
+		
+			}
+
+			//message interfacing part
+			
+			else if(check_response("CMT")) //here we can take another condition 
+ 694:	85 ed       	ldi	r24, 0xD5	; 213
+ 696:	91 e0       	ldi	r25, 0x01	; 1
+ 698:	0e 94 52 02 	call	0x4a4	; 0x4a4 <check_response>
+ 69c:	89 2b       	or	r24, r25
+ 69e:	81 f0       	breq	.+32     	; 0x6c0 <main+0x132>
+			{						//to also confirm the number to consider the sms
+				//action to take when a msg with the below text is received
+				if(check_response("ledon"))
+ 6a0:	89 ed       	ldi	r24, 0xD9	; 217
+ 6a2:	91 e0       	ldi	r25, 0x01	; 1
+ 6a4:	0e 94 52 02 	call	0x4a4	; 0x4a4 <check_response>
+ 6a8:	89 2b       	or	r24, r25
+ 6aa:	09 f0       	breq	.+2      	; 0x6ae <main+0x120>
+					led_on();
+ 6ac:	21 9a       	sbi	0x04, 1	; 4
+ 6ae:	29 9a       	sbi	0x05, 1	; 5
+				
+				if(check_response("ledoff"))
+ 6b0:	8f ed       	ldi	r24, 0xDF	; 223
+ 6b2:	91 e0       	ldi	r25, 0x01	; 1
+ 6b4:	0e 94 52 02 	call	0x4a4	; 0x4a4 <check_response>
+ 6b8:	89 2b       	or	r24, r25
+ 6ba:	21 f0       	breq	.+8      	; 0x6c4 <main+0x136>
+					led_off();
+ 6bc:	29 98       	cbi	0x05, 1	; 5
+ 6be:	02 c0       	rjmp	.+4      	; 0x6c4 <main+0x136>
+			} 
+			
+			//For more commands read the GSM Commands.txt file
+			
+			else read_buffer();
+ 6c0:	0e 94 d1 01 	call	0x3a2	; 0x3a2 <read_buffer>
+			//if none of the above conditions are satisfied then 
+			//display data in buffer
+	
+		}
+
+		sei();		
+ 6c4:	78 94       	sei
+ 6c6:	c0 cf       	rjmp	.-128    	; 0x648 <main+0xba>
+
+000006c8 <pop>:
+	stack[top] = element;
+}
+
+unsigned char pop()
+{
+	if(top == -1)
+ 6c8:	20 91 03 02 	lds	r18, 0x0203
+ 6cc:	30 91 04 02 	lds	r19, 0x0204
+ 6d0:	8f ef       	ldi	r24, 0xFF	; 255
+ 6d2:	2f 3f       	cpi	r18, 0xFF	; 255
+ 6d4:	38 07       	cpc	r19, r24
+ 6d6:	a1 f4       	brne	.+40     	; 0x700 <pop+0x38>
+	{
+		lcd_print("Stack is empty", 0x80);
+ 6d8:	00 d0       	rcall	.+0      	; 0x6da <pop+0x12>
+ 6da:	00 d0       	rcall	.+0      	; 0x6dc <pop+0x14>
+ 6dc:	86 ee       	ldi	r24, 0xE6	; 230
+ 6de:	91 e0       	ldi	r25, 0x01	; 1
+ 6e0:	ed b7       	in	r30, 0x3d	; 61
+ 6e2:	fe b7       	in	r31, 0x3e	; 62
+ 6e4:	92 83       	std	Z+2, r25	; 0x02
+ 6e6:	81 83       	std	Z+1, r24	; 0x01
+ 6e8:	80 e8       	ldi	r24, 0x80	; 128
+ 6ea:	90 e0       	ldi	r25, 0x00	; 0
+ 6ec:	94 83       	std	Z+4, r25	; 0x04
+ 6ee:	83 83       	std	Z+3, r24	; 0x03
+ 6f0:	0e 94 b0 02 	call	0x560	; 0x560 <lcd_print>
+ 6f4:	80 e0       	ldi	r24, 0x00	; 0
+ 6f6:	0f 90       	pop	r0
+ 6f8:	0f 90       	pop	r0
+ 6fa:	0f 90       	pop	r0
+ 6fc:	0f 90       	pop	r0
+ 6fe:	08 95       	ret
+		return 0;
+	}
+	return(stack[top--]);
+ 700:	f9 01       	movw	r30, r18
+ 702:	e7 5f       	subi	r30, 0xF7	; 247
+ 704:	fd 4f       	sbci	r31, 0xFD	; 253
+ 706:	80 81       	ld	r24, Z
+ 708:	21 50       	subi	r18, 0x01	; 1
+ 70a:	30 40       	sbci	r19, 0x00	; 0
+ 70c:	30 93 04 02 	sts	0x0204, r19
+ 710:	20 93 03 02 	sts	0x0203, r18
+
+}
+ 714:	08 95       	ret
+
+00000716 <push>:
+
+}
+
+void push(unsigned char element)
+{
+	if(top == (max-1))
+ 716:	e0 91 03 02 	lds	r30, 0x0203
+ 71a:	f0 91 04 02 	lds	r31, 0x0204
+ 71e:	e3 31       	cpi	r30, 0x13	; 19
+ 720:	f1 05       	cpc	r31, r1
+ 722:	99 f4       	brne	.+38     	; 0x74a <push+0x34>
+	{
+		lcd_print("Stack is full" ,0x80);
+ 724:	00 d0       	rcall	.+0      	; 0x726 <push+0x10>
+ 726:	00 d0       	rcall	.+0      	; 0x728 <push+0x12>
+ 728:	85 ef       	ldi	r24, 0xF5	; 245
+ 72a:	91 e0       	ldi	r25, 0x01	; 1
+ 72c:	ed b7       	in	r30, 0x3d	; 61
+ 72e:	fe b7       	in	r31, 0x3e	; 62
+ 730:	92 83       	std	Z+2, r25	; 0x02
+ 732:	81 83       	std	Z+1, r24	; 0x01
+ 734:	80 e8       	ldi	r24, 0x80	; 128
+ 736:	90 e0       	ldi	r25, 0x00	; 0
+ 738:	94 83       	std	Z+4, r25	; 0x04
+ 73a:	83 83       	std	Z+3, r24	; 0x03
+ 73c:	0e 94 b0 02 	call	0x560	; 0x560 <lcd_print>
+ 740:	0f 90       	pop	r0
+ 742:	0f 90       	pop	r0
+ 744:	0f 90       	pop	r0
+ 746:	0f 90       	pop	r0
+ 748:	08 95       	ret
+		return;
+	}
+	top = top+1;
+ 74a:	31 96       	adiw	r30, 0x01	; 1
+ 74c:	f0 93 04 02 	sts	0x0204, r31
+ 750:	e0 93 03 02 	sts	0x0203, r30
+	stack[top] = element;
+ 754:	e7 5f       	subi	r30, 0xF7	; 247
+ 756:	fd 4f       	sbci	r31, 0xFD	; 253
+ 758:	80 83       	st	Z, r24
+ 75a:	08 95       	ret
+
+0000075c <printnum>:
+	return(stack[top--]);
+
+}
+
+void printnum(int number)
+{
+ 75c:	cf 93       	push	r28
+ 75e:	df 93       	push	r29
+ 760:	ec 01       	movw	r28, r24
+	unsigned char temp=0;
+	
+	if(number == 0)
+ 762:	00 97       	sbiw	r24, 0x00	; 0
+ 764:	21 f4       	brne	.+8      	; 0x76e <printnum+0x12>
+	{
+		data('0');
+ 766:	80 e3       	ldi	r24, 0x30	; 48
+ 768:	0e 94 18 01 	call	0x230	; 0x230 <data>
+ 76c:	1b c0       	rjmp	.+54     	; 0x7a4 <printnum+0x48>
+		return;
+	}
+	
+	if(number < 0)
+ 76e:	97 ff       	sbrs	r25, 7
+ 770:	06 c0       	rjmp	.+12     	; 0x77e <printnum+0x22>
+	{	
+		number = number * -1;
+ 772:	d0 95       	com	r29
+ 774:	c1 95       	neg	r28
+ 776:	df 4f       	sbci	r29, 0xFF	; 255
+		data('-');
+ 778:	8d e2       	ldi	r24, 0x2D	; 45
+ 77a:	0e 94 18 01 	call	0x230	; 0x230 <data>
+	}
+		
+	while(number > 0)
+	{	
+		temp = number%10;
+ 77e:	ce 01       	movw	r24, r28
+ 780:	6a e0       	ldi	r22, 0x0A	; 10
+ 782:	70 e0       	ldi	r23, 0x00	; 0
+ 784:	0e 94 0e 04 	call	0x81c	; 0x81c <__divmodhi4>
+		temp += 0x30;
+		push(temp);
+ 788:	80 5d       	subi	r24, 0xD0	; 208
+ 78a:	0e 94 8b 03 	call	0x716	; 0x716 <push>
+		number = number/10; 
+ 78e:	ce 01       	movw	r24, r28
+ 790:	6a e0       	ldi	r22, 0x0A	; 10
+ 792:	70 e0       	ldi	r23, 0x00	; 0
+ 794:	0e 94 0e 04 	call	0x81c	; 0x81c <__divmodhi4>
+ 798:	eb 01       	movw	r28, r22
+	{	
+		number = number * -1;
+		data('-');
+	}
+		
+	while(number > 0)
+ 79a:	61 15       	cp	r22, r1
+ 79c:	71 05       	cpc	r23, r1
+ 79e:	79 f7       	brne	.-34     	; 0x77e <printnum+0x22>
+		temp = number%10;
+		temp += 0x30;
+		push(temp);
+		number = number/10; 
+	}
+	printstack();
+ 7a0:	0e 94 ab 01 	call	0x356	; 0x356 <printstack>
+
+
+}
+ 7a4:	df 91       	pop	r29
+ 7a6:	cf 91       	pop	r28
+ 7a8:	08 95       	ret
+
+000007aa <strstr>:
+ 7aa:	fb 01       	movw	r30, r22
+ 7ac:	51 91       	ld	r21, Z+
+ 7ae:	55 23       	and	r21, r21
+ 7b0:	a9 f0       	breq	.+42     	; 0x7dc <strstr+0x32>
+ 7b2:	bf 01       	movw	r22, r30
+ 7b4:	dc 01       	movw	r26, r24
+ 7b6:	4d 91       	ld	r20, X+
+ 7b8:	45 17       	cp	r20, r21
+ 7ba:	41 11       	cpse	r20, r1
+ 7bc:	e1 f7       	brne	.-8      	; 0x7b6 <strstr+0xc>
+ 7be:	59 f4       	brne	.+22     	; 0x7d6 <strstr+0x2c>
+ 7c0:	cd 01       	movw	r24, r26
+ 7c2:	01 90       	ld	r0, Z+
+ 7c4:	00 20       	and	r0, r0
+ 7c6:	49 f0       	breq	.+18     	; 0x7da <strstr+0x30>
+ 7c8:	4d 91       	ld	r20, X+
+ 7ca:	40 15       	cp	r20, r0
+ 7cc:	41 11       	cpse	r20, r1
+ 7ce:	c9 f3       	breq	.-14     	; 0x7c2 <strstr+0x18>
+ 7d0:	fb 01       	movw	r30, r22
+ 7d2:	41 11       	cpse	r20, r1
+ 7d4:	ef cf       	rjmp	.-34     	; 0x7b4 <strstr+0xa>
+ 7d6:	81 e0       	ldi	r24, 0x01	; 1
+ 7d8:	90 e0       	ldi	r25, 0x00	; 0
+ 7da:	01 97       	sbiw	r24, 0x01	; 1
+ 7dc:	08 95       	ret
+
+000007de <__mulsi3>:
+ 7de:	62 9f       	mul	r22, r18
+ 7e0:	d0 01       	movw	r26, r0
+ 7e2:	73 9f       	mul	r23, r19
+ 7e4:	f0 01       	movw	r30, r0
+ 7e6:	82 9f       	mul	r24, r18
+ 7e8:	e0 0d       	add	r30, r0
+ 7ea:	f1 1d       	adc	r31, r1
+ 7ec:	64 9f       	mul	r22, r20
+ 7ee:	e0 0d       	add	r30, r0
+ 7f0:	f1 1d       	adc	r31, r1
+ 7f2:	92 9f       	mul	r25, r18
+ 7f4:	f0 0d       	add	r31, r0
+ 7f6:	83 9f       	mul	r24, r19
+ 7f8:	f0 0d       	add	r31, r0
+ 7fa:	74 9f       	mul	r23, r20
+ 7fc:	f0 0d       	add	r31, r0
+ 7fe:	65 9f       	mul	r22, r21
+ 800:	f0 0d       	add	r31, r0
+ 802:	99 27       	eor	r25, r25
+ 804:	72 9f       	mul	r23, r18
+ 806:	b0 0d       	add	r27, r0
+ 808:	e1 1d       	adc	r30, r1
+ 80a:	f9 1f       	adc	r31, r25
+ 80c:	63 9f       	mul	r22, r19
+ 80e:	b0 0d       	add	r27, r0
+ 810:	e1 1d       	adc	r30, r1
+ 812:	f9 1f       	adc	r31, r25
+ 814:	bd 01       	movw	r22, r26
+ 816:	cf 01       	movw	r24, r30
+ 818:	11 24       	eor	r1, r1
+ 81a:	08 95       	ret
+
+0000081c <__divmodhi4>:
+ 81c:	97 fb       	bst	r25, 7
+ 81e:	09 2e       	mov	r0, r25
+ 820:	07 26       	eor	r0, r23
+ 822:	0a d0       	rcall	.+20     	; 0x838 <__divmodhi4_neg1>
+ 824:	77 fd       	sbrc	r23, 7
+ 826:	04 d0       	rcall	.+8      	; 0x830 <__divmodhi4_neg2>
+ 828:	2e d0       	rcall	.+92     	; 0x886 <__udivmodhi4>
+ 82a:	06 d0       	rcall	.+12     	; 0x838 <__divmodhi4_neg1>
+ 82c:	00 20       	and	r0, r0
+ 82e:	1a f4       	brpl	.+6      	; 0x836 <__divmodhi4_exit>
+
+00000830 <__divmodhi4_neg2>:
+ 830:	70 95       	com	r23
+ 832:	61 95       	neg	r22
+ 834:	7f 4f       	sbci	r23, 0xFF	; 255
+
+00000836 <__divmodhi4_exit>:
+ 836:	08 95       	ret
+
+00000838 <__divmodhi4_neg1>:
+ 838:	f6 f7       	brtc	.-4      	; 0x836 <__divmodhi4_exit>
+ 83a:	90 95       	com	r25
+ 83c:	81 95       	neg	r24
+ 83e:	9f 4f       	sbci	r25, 0xFF	; 255
+ 840:	08 95       	ret
+
+00000842 <__udivmodsi4>:
+ 842:	a1 e2       	ldi	r26, 0x21	; 33
+ 844:	1a 2e       	mov	r1, r26
+ 846:	aa 1b       	sub	r26, r26
+ 848:	bb 1b       	sub	r27, r27
+ 84a:	fd 01       	movw	r30, r26
+ 84c:	0d c0       	rjmp	.+26     	; 0x868 <__udivmodsi4_ep>
+
+0000084e <__udivmodsi4_loop>:
+ 84e:	aa 1f       	adc	r26, r26
+ 850:	bb 1f       	adc	r27, r27
+ 852:	ee 1f       	adc	r30, r30
+ 854:	ff 1f       	adc	r31, r31
+ 856:	a2 17       	cp	r26, r18
+ 858:	b3 07       	cpc	r27, r19
+ 85a:	e4 07       	cpc	r30, r20
+ 85c:	f5 07       	cpc	r31, r21
+ 85e:	20 f0       	brcs	.+8      	; 0x868 <__udivmodsi4_ep>
+ 860:	a2 1b       	sub	r26, r18
+ 862:	b3 0b       	sbc	r27, r19
+ 864:	e4 0b       	sbc	r30, r20
+ 866:	f5 0b       	sbc	r31, r21
+
+00000868 <__udivmodsi4_ep>:
+ 868:	66 1f       	adc	r22, r22
+ 86a:	77 1f       	adc	r23, r23
+ 86c:	88 1f       	adc	r24, r24
+ 86e:	99 1f       	adc	r25, r25
+ 870:	1a 94       	dec	r1
+ 872:	69 f7       	brne	.-38     	; 0x84e <__udivmodsi4_loop>
+ 874:	60 95       	com	r22
+ 876:	70 95       	com	r23
+ 878:	80 95       	com	r24
+ 87a:	90 95       	com	r25
+ 87c:	9b 01       	movw	r18, r22
+ 87e:	ac 01       	movw	r20, r24
+ 880:	bd 01       	movw	r22, r26
+ 882:	cf 01       	movw	r24, r30
+ 884:	08 95       	ret
+
+00000886 <__udivmodhi4>:
+ 886:	aa 1b       	sub	r26, r26
+ 888:	bb 1b       	sub	r27, r27
+ 88a:	51 e1       	ldi	r21, 0x11	; 17
+ 88c:	07 c0       	rjmp	.+14     	; 0x89c <__udivmodhi4_ep>
+
+0000088e <__udivmodhi4_loop>:
+ 88e:	aa 1f       	adc	r26, r26
+ 890:	bb 1f       	adc	r27, r27
+ 892:	a6 17       	cp	r26, r22
+ 894:	b7 07       	cpc	r27, r23
+ 896:	10 f0       	brcs	.+4      	; 0x89c <__udivmodhi4_ep>
+ 898:	a6 1b       	sub	r26, r22
+ 89a:	b7 0b       	sbc	r27, r23
+
+0000089c <__udivmodhi4_ep>:
+ 89c:	88 1f       	adc	r24, r24
+ 89e:	99 1f       	adc	r25, r25
+ 8a0:	5a 95       	dec	r21
+ 8a2:	a9 f7       	brne	.-22     	; 0x88e <__udivmodhi4_loop>
+ 8a4:	80 95       	com	r24
+ 8a6:	90 95       	com	r25
+ 8a8:	bc 01       	movw	r22, r24
+ 8aa:	cd 01       	movw	r24, r26
+ 8ac:	08 95       	ret
+
+000008ae <_exit>:
+ 8ae:	f8 94       	cli
+
+000008b0 <__stop_program>:
+ 8b0:	ff cf       	rjmp	.-2      	; 0x8b0 <__stop_program>
